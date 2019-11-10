@@ -1,19 +1,23 @@
 <template lang="html">
-  <div class="photos-wrapper photos">
-    
-  </div>
+  <ul class="photos-wrapper photos">
+    <li v-for="(photo, index) in photos" :key="index">
+      <img :src="photo">
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   name: 'Photos',
-  data() {
-    return {
-      video: undefined,
-      canvas: undefined,
-    };
+  props: {
+    photos: {
+      type: Array,
+      require: true,
+    },
   },
-  created() {}
+  data() {
+    return {};
+  },
 }
 </script>
 

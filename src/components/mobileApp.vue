@@ -2,7 +2,7 @@
 <div class="container">
   <button class="mobile-btn" v-for="btn in buttons" @click="currentComponent = btn.data">{{btn.text}}</button>
   <transition name="slide" mode="out-in">
-    <component :is="currentComponent" :stream="stream" class="slider-element" />
+    <component :is="currentComponent" :stream="stream" :photos="photos" class="slider-element" @pushPhoto="pushPhoto" />
   </transition>
 </div>
 </template>
@@ -27,7 +27,13 @@ export default {
       }],
       stream: null,
       currentComponent: 'Video',
+      photos: [],
     }
+  },
+  methods: {
+    pushPhoto(amount) {
+      this.photos = [...this.photos, amount.photo];
+    },
   },
   created() {
     navigator.mediaDevices.getUserMedia({
