@@ -27,10 +27,8 @@ export default {
     }
   },
   created() {
-    window.addEventListener('resize', () => {
-      window.matchMedia('(min-width: 768px)')
-        .matches ? this.isMobile = 'desktopApp' : this.isMobile = 'mobileApp';
-    });
+    window.matchMedia('(min-width: 768px)')
+      .matches ? this.isMobile = 'desktopApp' : this.isMobile = 'mobileApp';
   },
 }
 </script>
