@@ -33,4 +33,7 @@ export default {
     transform: rotateZ(-90deg) translateY(100vh);
     opacity: 0;
 }
+.remove-leave-active {
+    position: absolute;
+}
 </style>
