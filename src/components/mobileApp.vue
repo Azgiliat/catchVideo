@@ -2,7 +2,7 @@
 <div class="container">
   <button class="mobile-btn" v-for="btn in buttons" @click="currentComponent = btn.data">{{btn.text}}</button>
   <transition name="slide" mode="out-in">
-    <component :is="currentComponent" :stream="stream" :photos="photos" class="slider-element" @pushPhoto="pushPhoto" />
+    <component :is="currentComponent" v-bind="currentProp" class="slider-element" @pushPhoto="pushPhoto" />
   </transition>
 </div>
 </template>
@@ -28,6 +28,16 @@ export default {
       stream: null,
       currentComponent: 'Video',
       photos: [],
+    }
+  },
+  computed: {
+    currentProp() {
+      if(this.currentComponent === 'Video') return {
+        stream: this.stream
+      };
+      if(this.currentComponent === 'Photos') return {
+        photos: this.photos
+      };
     }
   },
   methods: {

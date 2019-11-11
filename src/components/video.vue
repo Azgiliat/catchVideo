@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="video-wrapper">
+  <div class="video-wrapper" v-resize="resize">
     <video @canplay="videoRdy" class="video" :srcObject.prop="stream" autoplay>
     </video>
     <takePhoto v-if="canPlay" @pushPhoto="pushPhoto" :video="video" :styleObj="styleObj" />
@@ -42,6 +42,12 @@ export default {
         height: `${this.video.clientHeight}px`,
       };
       this.canPlay = true;
+    },
+    resize() {
+      this.styleObj = {
+        width: `${this.video.clientWidth}px`,
+        height: `${this.video.clientHeight}px`,
+      };
     },
   },
 }

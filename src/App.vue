@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div v-resize="resize" id="app">
   <transition name="rebuild" mode="out-in">
     <component :is="isMobile" />
   </transition>
@@ -20,11 +20,17 @@ export default {
       isMobile: 'desktopApp',
     };
   },
-  created() {
-    setInterval(() => {
+  methods: {
+    resize() {
       window.matchMedia('(min-width: 768px)')
         .matches ? this.isMobile = 'desktopApp' : this.isMobile = 'mobileApp';
-    }, 200);
+    }
+  },
+  created() {
+    window.addEventListener('resize', () => {
+      window.matchMedia('(min-width: 768px)')
+        .matches ? this.isMobile = 'desktopApp' : this.isMobile = 'mobileApp';
+    });
   },
 }
 </script>
