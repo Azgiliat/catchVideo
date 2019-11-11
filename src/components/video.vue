@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="video-wrapper">
-    <video class="video" :srcObject.prop="stream" autoplay>
+    <video @canplay="videoRdy" class="video" :srcObject.prop="stream" autoplay>
     </video>
-    <takePhoto @pushPhoto="pushPhoto" :video="video"/>
+    <takePhoto v-if="canPlay" @pushPhoto="pushPhoto" :video="video" :styleObj="styleObj" />
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
   data() {
     return {
       video: undefined,
+      styleObj: {
+        width: 0,
+        height: 0,
+      },
+      canPlay: false,
     };
   },
   mounted() {
@@ -30,6 +35,13 @@ export default {
   methods: {
     pushPhoto(amount) {
       this.$emit('pushPhoto', amount);
+    },
+    videoRdy() {
+      this.styleObj = {
+        width: `${this.video.clientWidth}px`,
+        height: `${this.video.clientHeight}px`,
+      };
+      this.canPlay = true;
     },
   },
 }

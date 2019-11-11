@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="current-photo">
   <div class="canvas-wrapper">
-    <canvas class="photos-canvas" />
+    <canvas class="photos-canvas" :height="styleObj.height" :width="styleObj.width"/>
   </div>
   <button @click="takePhoto">take photo</button>
 </div>
@@ -14,7 +14,11 @@ export default {
     video: {
       type: HTMLVideoElement,
       require: true,
-    }
+    },
+    styleObj: {
+      type: Object,
+      reauire: false,
+    },
   },
   data() {
     return {
@@ -27,7 +31,7 @@ export default {
   methods: {
     takePhoto() {
       const context = this.canvas.getContext('2d');
-      context.drawImage(this.video, 0, 0, 300, 150);
+      context.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
       this.$emit('pushPhoto', {
         photo: this.canvas.toDataURL('image/png')
       });
