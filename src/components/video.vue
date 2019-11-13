@@ -2,7 +2,7 @@
   <div class="video-wrapper" v-resize="resize">
     <video @canplay="videoRdy" class="video" :srcObject.prop="stream" autoplay>
     </video>
-    <takePhoto v-if="canPlay" @pushPhoto="pushPhoto" :video="video" :styleObj="styleObj" />
+    <takePhoto v-if="canPlay" @pushPhoto="pushPhoto" @back="$emit('back')" :video="video" :styleObj="styleObj" />
   </div>
 </template>
 
@@ -54,4 +54,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.video {
+    margin-bottom: 2rem;
+    width: 100%;
+}
 </style>

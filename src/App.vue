@@ -1,18 +1,14 @@
 <template>
 <div v-resize="resize" id="app">
-  <transition name="rebuild" mode="out-in">
-    <component :is="isMobile" />
-  </transition>
+  <desktopApp />
 </div>
 </template>
 
 <script>
-import mobileApp from './components/mobileApp.vue';
 import desktopApp from './components/desktopApp.vue';
 export default {
   name: 'app',
   components: {
-    mobileApp,
     desktopApp,
   },
   data() {
@@ -41,12 +37,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.container {
-  transition: all 0.5s;
-  max-width: 750px;
-  margin: 0 auto;
 }
 
 .rebuild-enter,

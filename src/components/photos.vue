@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style lang="scss">
+.photos-wrapper {
+    list-style: none;
+    padding: 0;
+}
 .photos__list-item {
     transition: all 1s;
 }

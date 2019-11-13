@@ -1,6 +1,6 @@
 <template lang="html">
   <li>
-    <button class="photos__delete-btn" @click.prevent="$emit('del')">X</button>
+    <button class="photos__delete-btn" @click.prevent="$emit('del')">Delete photo</button>
     <img class="photos__img" :src="photo">
   </li>
 </template>

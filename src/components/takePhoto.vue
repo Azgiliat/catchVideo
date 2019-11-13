@@ -3,7 +3,8 @@
   <div class="canvas-wrapper">
     <canvas class="photos-canvas" :height="styleObj.height" :width="styleObj.width"/>
   </div>
-  <button @click="takePhoto">take photo</button>
+  <button class="button button--capture" @click="takePhoto">Capture</button>
+  <button class="button" @click="$emit('back')">Back</button>
 </div>
 </template>
 
@@ -41,4 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
+.button--capture:hover {
+    background-color: #4f9b7a;
+}
 </style>
